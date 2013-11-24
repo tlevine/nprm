@@ -14,7 +14,7 @@ npm.require <- function(name, prefix = 'r-') {
   # Turn the input into a file path.
   if (grepl('/',name)) {
     # Relative path
-    if (file(name)$isdir) {
+    if (file.info(name)$isdir) {
       # Path to a package directory
       main <- .main(name)
     } else {
