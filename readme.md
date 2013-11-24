@@ -82,8 +82,6 @@ things that you can do, pretty much all from the npm
 command-line interface. Read about that
 [here]().
 
-
-
 ## What's wrong with R packages?
 
 * They're not outrageously simple to make.
