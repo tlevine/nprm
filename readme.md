@@ -32,7 +32,7 @@ And then let's load it into another.
 # super.r
 
 library(npm)
-tau <- npm::require('./sub.r')
+tau <- npm.require('./sub.r')
 print(tau)
 ```
 
@@ -41,7 +41,7 @@ Let's use [foobar](r-foobar)
 in our R script.
 ```r
 library(npm)
-foobar <- npm::require('foobar')
+foobar <- npm.require('foobar')
 foobar$baz()
 ```
 
