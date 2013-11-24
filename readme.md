@@ -58,8 +58,19 @@ Get a basic `package.json` by running `npm init`.
 npm init
 ```
 
-The only things you'll need to add are the dependencies.
-In the case of the previous
+The main thing you'll need to add is the dependencies.
+In the case of the previous script, your `package.json`
+might look like this.
+
+```json
+{"foo":"bar"}
+```
+
+Then make an account and run `npm publish`.
+
+```sh
+npm publish
+```
 
 Since it's so easy to write packages, you can actually
 do this for pretty much anything that you write as long
