@@ -1,2 +1,8 @@
+library(testthat)
 source('../npm.r')
-npm.require('./tau')
+
+expect_that(npm.require('./tau'), equals(2 * pi))
+expect_that(exists('tau'), equals(FALSE))
+
+expect_that(npm.require('tau'), equals(2 * pi))
+expect_that(exists('tau'), equals(FALSE))
