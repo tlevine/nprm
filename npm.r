@@ -1,15 +1,21 @@
+library(RJSONIO)
+
 npm.require <- function(name, prefix = 'r-') {
 
   # Turn the input into a file path.
   if (grepl('/',name)) {
-    path <- name
+    main <- name
   } else {
-    path <- paste('node_modules', paste0(prefix, name), sep = .Platform$file.sep)
+    directory <- file.path('node_modules', paste0(prefix, name))
+    package.json <- file.path(directory, 'package.json')
+    package <- fromJSON(package.json)
+    main <- file.path(directory, package$main)
+    readChar(main, file.info(main)$size) 
   }
 
   # http://stackoverflow.com/questions/8095294/sourcing-methods-to-an-environment-different-than-globalenv
   env <- new.env()
   eval(module <- list(), envir=env)
-  eval(parse(file=path), envir=env)
+  eval(parse(file=main), envir=env)
   get('module', envir = env)$exports
 }
