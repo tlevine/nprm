@@ -1,4 +1,4 @@
-require <- function(name, prefix = 'r-') {
+npm.require <- function(name, prefix = 'r-') {
 
   # Turn the input into a file path.
   if (grepl('/',name)) {
@@ -9,6 +9,7 @@ require <- function(name, prefix = 'r-') {
 
   # http://stackoverflow.com/questions/8095294/sourcing-methods-to-an-environment-different-than-globalenv
   env <- new.env()
+  eval(module <- list(), envir=env)
   eval(parse(file=path), envir=env)
   get('module', envir = env)$exports
 }
