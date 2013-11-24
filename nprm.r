@@ -1,10 +1,11 @@
 library(RJSONIO)
+unloadNamespace('RJSONIO')
 
 # Given the directory of a package, find the main file.
 .main <- function(directory) {
   package.json <- file.path(directory, 'package.json')
   readChar(package.json, file.info(package.json)$size) 
-  package <- fromJSON(package.json)
+  package <- RJSONIO::fromJSON(package.json)
   main <- file.path(directory, package$main)
   main
 }
