@@ -82,8 +82,6 @@ things that you can do, pretty much all from the npm
 command-line interface. Read about that
 [here]().
 
-## Stuff
-http://wiki.commonjs.org/wiki/Modules/1.1.1
 
 
 ## What's wrong with R packages?
@@ -97,6 +95,11 @@ http://wiki.commonjs.org/wiki/Modules/1.1.1
 * Help
 * Examples
 
-## Good things that npm has that this doesn't provide
+## Things that npm has that this doesn't provide
 
-* Detect required packages on `npm init`
+* `npm init` detects required packages. This doesn't.
+* npm implements
+    [CommonJS modules 1.0](http://wiki.commonjs.org/wiki/Modules/1.0).
+    I'd like to implement CommonJS modules
+    (probably version [1.1.1](http://wiki.commonjs.org/wiki/Modules/1.1.1)),
+    but it just uses `module$exports` right now.
