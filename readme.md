@@ -19,6 +19,24 @@ Here are three common things you might want to do.
 3. Write a package and publish it to npm.
 
 ### Include one file in another
+Let's define [tau]() in one file.
+```r
+# sub.r
+
+library(npm)
+module$exports <- pi * 2
+```
+
+And then let's load it into another.
+```r
+# super.r
+
+library(npm)
+tau <- npm::require('./sub.r')
+print(tau)
+```
+
+### Install a package from npm.
 
 
 
