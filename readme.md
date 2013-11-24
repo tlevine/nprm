@@ -1,14 +1,16 @@
+node-packaged R modules
+======
 [npm]() is the best package manager,
-so I wanted to use it for R packages.
+so let's use it for R packages.
 
 ## Installing
-You'll need `npm` in order to install packages. npm comes
+You'll need npm in order to install packages. npm comes
 with node, so just [Install node]().
 
-You'll need `r-npm` in order to create and load packages.
-Install `r-npm` like you would any other R package.
+You'll need nprm in order to create and load packages.
+Install nprm like you would any other R package.
 ```r
-install.packages('npm')
+install.packages('nprm')
 ```
 
 ## Crash course
@@ -23,7 +25,7 @@ Let's define [tau]() in one file.
 ```r
 # sub.r
 
-library(npm)
+library(nprm)
 module$exports <- pi * 2
 ```
 
@@ -31,8 +33,8 @@ And then let's load it into another.
 ```r
 # super.r
 
-library(npm)
-tau <- npm.require('./sub.r')
+library(nprm)
+tau <- nprm.require('./sub.r')
 print(tau)
 ```
 
@@ -40,8 +42,8 @@ print(tau)
 Let's use [foobar](r-foobar)
 in our R script.
 ```r
-library(npm)
-foobar <- npm.require('foobar')
+library(nprm)
+foobar <- nprm.require('foobar')
 foobar$baz()
 ```
 
@@ -93,11 +95,11 @@ command-line interface. Read about that
 * Help
 * Examples
 
-## Things that npm has that this doesn't provide
+## Things that npm has that nprm doesn't provide
 
 * `npm init` detects required packages. This doesn't.
 * npm implements
     [CommonJS modules 1.0](http://wiki.commonjs.org/wiki/Modules/1.0).
     I'd like to implement CommonJS modules
     (probably version [1.1.1](http://wiki.commonjs.org/wiki/Modules/1.1.1)),
-    but it just uses `module$exports` right now.
+    but nprm just uses `module$exports` right now.

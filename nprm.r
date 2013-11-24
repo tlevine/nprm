@@ -9,7 +9,7 @@ library(RJSONIO)
   main
 }
 
-npm.require <- function(name, prefix = 'r-') {
+nprm.require <- function(name, prefix = 'r-') {
 
   # Turn the input into a file path.
   if (grepl('/',name)) {
