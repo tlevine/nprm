@@ -1,16 +1,29 @@
 library(RJSONIO)
 
+# Given the directory of a package, find the main file.
+.main <- function(directory) {
+  package.json <- file.path(directory, 'package.json')
+  readChar(package.json, file.info(package.json)$size) 
+  package <- fromJSON(package.json)
+  main <- file.path(directory, package$main)
+  main
+}
+
 npm.require <- function(name, prefix = 'r-') {
 
   # Turn the input into a file path.
   if (grepl('/',name)) {
-    main <- name
+    # Relative path
+    if (file(name)$isdir) {
+      # Path to a package directory
+      main <- .main(name)
+    } else {
+      # Path to a file
+      main <- name
+    }
   } else {
-    directory <- file.path('node_modules', paste0(prefix, name))
-    package.json <- file.path(directory, 'package.json')
-    package <- fromJSON(package.json)
-    main <- file.path(directory, package$main)
-    readChar(main, file.info(main)$size) 
+    # Absolute package name
+    main <- .main(file.path('node_modules', paste0(prefix, name)))
   }
 
   # http://stackoverflow.com/questions/8095294/sourcing-methods-to-an-environment-different-than-globalenv
