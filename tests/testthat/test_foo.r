@@ -1,6 +1,7 @@
 #!/usr/bin/env Rscript
+# library(nprm)
+# source('nprm.r')
 library(testthat)
-source('../nprm.r')
 
 expect_that('RJSONIO' %in% loadedNamespaces(), is_false())
 
