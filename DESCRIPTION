@@ -3,8 +3,8 @@ Title: Node-packaged R modules
 Description: nprm lets you package R code with npm.
 URL: https://github.com/tlevine/nprm
 Version: 0.0
-Maintainer: Thomas Levine <.@thomaslevine.com>
-Author: Thomas Levine <.@thomaslevine.com>
+Maintainer: Thomas Levine <dot@thomaslevine.com>
+Author: Thomas Levine <dot@thomaslevine.com>
 Depends: R (>= 3.0.2)
 Suggests: testthat
 Imports: RJSONIO

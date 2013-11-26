@@ -1,14 +1,17 @@
+#' Load R code with npm
+#'
+#' @param The name of the packages
+#'
+#' @return
+#' The package exports
+#'
+#' @export
+#'
+#' @examples
+#' nprm.requrire('treasury.io')
+
 library(RJSONIO)
 unloadNamespace('RJSONIO')
-
-# Given the directory of a package, find the main file.
-.main <- function(directory) {
-  package.json <- file.path(directory, 'package.json')
-  readChar(package.json, file.info(package.json)$size) 
-  package <- RJSONIO::fromJSON(package.json)
-  main <- file.path(directory, package$main)
-  main
-}
 
 nprm.require <- function(name, prefix = 'r-') {
 
@@ -32,4 +35,13 @@ nprm.require <- function(name, prefix = 'r-') {
   eval(module <- list(), envir=env)
   eval(parse(file=main), envir=env)
   get('module.exports', envir = env)
+}
+
+# Given the directory of a package, find the main file.
+.main <- function(directory) {
+  package.json <- file.path(directory, 'package.json')
+  readChar(package.json, file.info(package.json)$size) 
+  package <- RJSONIO::fromJSON(package.json)
+  main <- file.path(directory, package$main)
+  main
 }
