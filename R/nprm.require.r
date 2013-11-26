@@ -18,6 +18,7 @@ nprm.require <- function(name, prefix = 'r-') {
   # Turn the input into a file path.
   if (grepl('/',name)) {
     # Relative path
+    dir <- '.'
     if (file.info(name)$isdir) {
       # Path to a package directory
       main <- .main(name)
@@ -27,14 +28,19 @@ nprm.require <- function(name, prefix = 'r-') {
     }
   } else {
     # Absolute package name
-    main <- .main(file.path('node_modules', paste0(prefix, name)))
+    dir <- file.path('node_modules', paste0(prefix, name))
+    main <- .main(dir)
   }
+
+  prevwd <- getwd()
+  setwd(dir)
 
   # http://stackoverflow.com/questions/8095294/sourcing-methods-to-an-environment-different-than-globalenv
   env <- new.env()
-  eval(module <- list(), envir=env)
   eval(parse(file=main), envir=env)
   get('exports', envir = env)
+
+  setwd(prevwd)
 }
 
 # Given the directory of a package, find the main file.
@@ -42,6 +48,5 @@ nprm.require <- function(name, prefix = 'r-') {
   package.json <- file.path(directory, 'package.json')
   readChar(package.json, file.info(package.json)$size) 
   package <- RJSONIO::fromJSON(package.json)
-  main <- file.path(directory, package$main)
-  main
+  package$main
 }
