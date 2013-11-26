@@ -10,7 +10,8 @@ with node, so just [Install node]().
 You'll need nprm in order to create and load packages.
 Install nprm like you would any other R package.
 ```r
-install.packages('nprm')
+library(devtools)
+install_github('nprm')
 ```
 
 ## Crash course
