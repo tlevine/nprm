@@ -26,7 +26,7 @@ Let's define [tau]() in one file.
 # sub.r
 
 library(nprm)
-module$exports <- pi * 2
+module.exports <- pi * 2
 ```
 
 And then let's load it into another.
@@ -100,6 +100,6 @@ command-line interface. Read about that
 * `npm init` detects required packages. This doesn't.
 * npm implements
     [CommonJS modules 1.0](http://wiki.commonjs.org/wiki/Modules/1.0).
-    I'd like to implement CommonJS modules
+    It might be cool to implement more of this
     (probably version [1.1.1](http://wiki.commonjs.org/wiki/Modules/1.1.1)),
-    but nprm just uses `module$exports` right now.
+    but nprm just uses `module.exports` right now.

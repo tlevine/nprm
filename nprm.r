@@ -31,5 +31,5 @@ nprm.require <- function(name, prefix = 'r-') {
   env <- new.env()
   eval(module <- list(), envir=env)
   eval(parse(file=main), envir=env)
-  get('module', envir = env)$exports
+  get('module.exports', envir = env)
 }
