@@ -34,7 +34,7 @@ nprm.require <- function(name, prefix = 'r-') {
   env <- new.env()
   eval(module <- list(), envir=env)
   eval(parse(file=main), envir=env)
-  get('module.exports', envir = env)
+  get('exports', envir = env)
 }
 
 # Given the directory of a package, find the main file.

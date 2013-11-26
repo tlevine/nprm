@@ -27,7 +27,7 @@ Let's define [tau]() in one file.
 # sub.r
 
 library(nprm)
-module.exports <- pi * 2
+exports <- pi * 2
 ```
 
 And then let's load it into another.
@@ -73,8 +73,33 @@ In the case of the previous script, your `package.json`
 might look like this.
 
 ```json
-{"foo":"bar"}
+{
+  "name": "r-treasury.io",
+  "version": "0.0.2",
+  "description": "Submit a sql query to treasury.io and return a data.frame",
+  "main": "main.r",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tlevine/r-treasury.io"
+  },
+  "keywords": [
+    "r", "nprm"
+  ],
+  "author": {
+    "name": "Thomas Levine"
+  },
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/tlevine/r-treasury.io/issues"
+  },
+}
 ```
+
+(Prefix the package name with `r-` so people don't think it's
+a node package.)
 
 Then make an account and run `npm publish`.
 
@@ -89,8 +114,10 @@ as it doesn't contain any secrets.
 ## Other stuff
 Now that you're using npm, there are a lot of way-cooler
 things that you can do, pretty much all from the npm
-command-line interface. Read about that
-[here]().
+command-line interface.
+
+* [10 Cool Things You Probably Didn’t Realize npm Could Do](http://blog.izs.me/post/1675072029/10-cool-things-you-probably-didnt-realize-npm-could-do)
+* [task automation with npm run](http://substack.net/task_automation_with_npm_run)
 
 ## What's wrong with R packages?
 
@@ -108,6 +135,6 @@ command-line interface. Read about that
 * `npm init` detects required packages. This doesn't.
 * npm implements
     [CommonJS modules 1.0](http://wiki.commonjs.org/wiki/Modules/1.0).
-    It might be cool to implement more of this
-    (probably version [1.1.1](http://wiki.commonjs.org/wiki/Modules/1.1.1)),
-    but nprm just uses `module.exports` right now.
+    Given that R is not JavaScript, it doesn't necessarily make sense to
+    implement this, but it might make sense to add more of the features
+    (probably version [1.1.1](http://wiki.commonjs.org/wiki/Modules/1.1.1) though).

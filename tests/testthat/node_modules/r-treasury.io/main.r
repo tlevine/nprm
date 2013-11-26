@@ -29,4 +29,4 @@ treasury.io <- function(sql) {
   }
 }
 
-module.exports <- treasury.io
+exports <- treasury.io
