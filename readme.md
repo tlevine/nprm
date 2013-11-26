@@ -11,7 +11,7 @@ You'll need nprm in order to create and load packages.
 Install nprm like you would any other R package.
 ```r
 library(devtools)
-install_github('nprm')
+install_github('nprm', 'tlevine')
 ```
 
 ## Crash course
@@ -40,12 +40,19 @@ print(tau)
 ```
 
 ### Install a package from npm.
-Let's use [foobar](r-foobar)
+Let's use [treasury.io](https://npmjs.org/package/r-treasury.io)
 in our R script.
+
+Install it from the shell.
+
+```sh
+npm install r-treasury.io
+```
+
 ```r
 library(nprm)
-foobar <- nprm.require('foobar')
-foobar$baz()
+treasury.io <- nprm.require('treasury.io')
+treasury.io('SELECT * FROM t3c LIMIT 4')
 ```
 
 ### Write a package and publish it to npm.
