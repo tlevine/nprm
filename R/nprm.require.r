@@ -38,9 +38,10 @@ nprm.require <- function(name, prefix = 'r-') {
   # http://stackoverflow.com/questions/8095294/sourcing-methods-to-an-environment-different-than-globalenv
   env <- new.env()
   eval(parse(file=main), envir=env)
-  get('exports', envir = env)
+  exports <- get('exports', envir = env)
 
   setwd(prevwd)
+  exports
 }
 
 # Given the directory of a package, find the main file.
