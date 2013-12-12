@@ -138,3 +138,9 @@ command-line interface.
     Given that R is not JavaScript, it doesn't necessarily make sense to
     implement this, but it might make sense to add more of the features
     (probably version [1.1.1](http://wiki.commonjs.org/wiki/Modules/1.1.1) though).
+
+## Things to package with nprm
+
+* Anything that people host on arbitrary websites and load with `source`
+* My own data music and data gastronomification functions, like `geom_taco`
+* Small helper snippets that people copy around to their different projects
